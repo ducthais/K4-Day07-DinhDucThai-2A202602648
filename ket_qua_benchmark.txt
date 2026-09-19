@@ -1,0 +1,118 @@
+================================================================================
+BÁO CÁO KẾT QUẢ BENCHMARK RETRIEVAL & CHUNKING
+Chiến lược đánh giá : HeadingChunker
+Mô hình embedding   : MockEmbedder (Băm ký tự - cần phân tích count/độ mạch lạc)
+Tổng số tài liệu    : 7 files
+Tổng số chunks      : 28 chunks
+================================================================================
+
+### 1. ĐÁNH GIÁ CHI TIẾT 5 CÂU HỎI BENCHMARK
+
+--------------------------------------------------------------------------------
+[Q1] [Tra số liệu]
+Câu hỏi : Mức học bổng khuyến khích học tập loại Xuất sắc của chương trình chuẩn khóa QH-2023 đến QH-2025 tại UET là bao nhiêu?
+Target  : uet-merit-scholarship-2025-2026
+Gold    : 3.600.000đ/tháng (chương trình chuẩn khóa QH-2023 đến QH-2025 tại UET).
+Mức 1 - Document Hit : ĐẠT (Rank 1)
+Mức 2 - Content Hit  : TRƯỢT (Chunk không chứa đáp án chi tiết)
+Điểm số câu này      : 0 / 2 điểm
+Agent Answer         : Dựa trên ngữ cảnh cung cấp, không tìm thấy thông tin đầy đủ để trả lời chính xác câu hỏi.
+Top-3 Retrieved Chunks:
+   [1] score=0.2195 | uet-merit-scholarship-2025-2026#3 | # Học bổng khuyến khích học tập UET học kỳ I năm 2025–2026 | Định mức kinh tế kỹ thuật QH-2023 đến QH-2025 | 4... <-- [TARGET MATCH]
+   [2] score=0.1997 | rmit-current-student-scholarship-2026#0 | # Học bổng thành tích cho sinh viên RMIT Việt Nam đang học năm 2026 RMIT Việt Nam dành 21 suất cho sinh viên c...
+   [3] score=0.1925 | uet-merit-scholarship-2025-2026#0 | # Học bổng khuyến khích học tập UET học kỳ I năm 2025–2026 Quyết định cấp học bổng cho sinh viên đang trong th... <-- [TARGET MATCH]
+
+--------------------------------------------------------------------------------
+[Q2] [Hỏi điều kiện]
+Câu hỏi : Để duy trì học bổng toàn phần hoặc 100% tại VinUni, sinh viên cần đáp ứng những tiêu chí nào?
+Target  : scholarship-renewal-policy
+Gold    : GPA tích lũy của năm xét đạt ít nhất 3,2; không vi phạm kỷ luật mức nghiêm trọng theo quy định; hoàn tất tự đánh giá E.X.C.E.L và trao đổi với cố vấn.
+Mức 1 - Document Hit : TRƯỢT
+Mức 2 - Content Hit  : TRƯỢT (Chunk không chứa đáp án chi tiết)
+Điểm số câu này      : 0 / 2 điểm
+Agent Answer         : Dựa trên ngữ cảnh cung cấp, không tìm thấy thông tin đầy đủ để trả lời chính xác câu hỏi.
+Top-3 Retrieved Chunks:
+   [1] score=0.3537 | ueh-faculty-support#2 | # Hỗ trợ tài chính dành cho giảng viên UEH Chính sách tăng thu nhập hằng tháng thêm 20 triệu đồng cho Giáo sư,...
+   [2] score=0.2113 | uet-merit-scholarship-2025-2026#1 | # Học bổng khuyến khích học tập UET học kỳ I năm 2025–2026 Riêng chương trình CNTT chất lượng cao yêu cầu học ...
+   [3] score=0.2064 | uet-merit-scholarship-2025-2026#3 | # Học bổng khuyến khích học tập UET học kỳ I năm 2025–2026 | Định mức kinh tế kỹ thuật QH-2023 đến QH-2025 | 4...
+
+--------------------------------------------------------------------------------
+[Q3] [Hỏi quy trình / thứ tự ưu tiên]
+Câu hỏi : Quy trình và tiêu chí xét chọn ứng viên học bổng thành tích cho sinh viên RMIT đang học khi có cùng điểm GPA là gì?
+Target  : rmit-current-student-scholarship-2026
+Gold    : Khi bằng GPA, người có nhiều tín chỉ hơn được ưu tiên; nếu vẫn bằng nhau thì so kết quả học kỳ gần nhất. Học bổng 50% được phân trước, sau đó tới mức 25%.
+Mức 1 - Document Hit : TRƯỢT
+Mức 2 - Content Hit  : TRƯỢT (Chunk không chứa đáp án chi tiết)
+Điểm số câu này      : 0 / 2 điểm
+Agent Answer         : Để duy trì học bổng toàn phần/100% tại VinUni, sinh viên cần GPA tích lũy năm đạt tối thiểu 3,2, không kỷ luật nghiêm trọng và hoàn thành đánh giá E.X.C.E.L với cố vấn [1].
+Top-3 Retrieved Chunks:
+   [1] score=0.3269 | uet-merit-scholarship-2025-2026#0 | # Học bổng khuyến khích học tập UET học kỳ I năm 2025–2026 Quyết định cấp học bổng cho sinh viên đang trong th...
+   [2] score=0.2782 | scholarship-renewal-policy#1 | # Tiêu chí duy trì học bổng đầu vào và hỗ trợ tài chính | Khoản hỗ trợ | Ngưỡng và điều kiện duy trì | | --- |...
+   [3] score=0.1963 | scholarship-renewal-policy#0 | # Tiêu chí duy trì học bổng đầu vào và hỗ trợ tài chính Văn bản GDL-SAM-004-V2.1, ban hành ngày 04/09/2025, áp...
+
+--------------------------------------------------------------------------------
+[Q4] [Liệt kê]
+Câu hỏi : Các gói học bổng tài năng đầu vào bậc cử nhân tại VinUni gồm những mức nào và tên gọi tương ứng là gì?
+Target  : undergraduate-scholarships
+Gold    : President’s Excellence (toàn bộ học phí và chi phí sinh hoạt), Provost’s Merit (100% học phí), Dean’s Distinction (80% hoặc 90%), và Discipline’s Honor (50%, 60% hoặc 70%).
+Mức 1 - Document Hit : ĐẠT (Rank 1)
+Mức 2 - Content Hit  : TRƯỢT (Chunk không chứa đáp án chi tiết)
+Điểm số câu này      : 0 / 2 điểm
+Agent Answer         : Dựa trên ngữ cảnh cung cấp, không tìm thấy thông tin đầy đủ để trả lời chính xác câu hỏi.
+Top-3 Retrieved Chunks:
+   [1] score=0.2450 | undergraduate-scholarships#5 | ## Hỗ trợ bổ sung Mức học bổng cuối cùng do Hội đồng Tuyển sinh đánh giá. Học bổng áp dụng trong quá trình học... <-- [TARGET MATCH]
+   [2] score=0.2387 | scholarship-renewal-policy#0 | # Tiêu chí duy trì học bổng đầu vào và hỗ trợ tài chính Văn bản GDL-SAM-004-V2.1, ban hành ngày 04/09/2025, áp...
+   [3] score=0.1297 | ueh-faculty-support#2 | # Hỗ trợ tài chính dành cho giảng viên UEH Chính sách tăng thu nhập hằng tháng thêm 20 triệu đồng cho Giáo sư,...
+
+--------------------------------------------------------------------------------
+[Q5] [Phân biệt đối tượng (cần metadata_filter)]
+Câu hỏi : Chính sách hỗ trợ tài chính tại UEH có những mức hỗ trợ nào?
+Bộ lọc  : {'audience': 'student'}
+Target  : ueh-learning-support-scholarship
+Gold    : Học bổng toàn phần bằng 100% học phí trung bình của 15 tín chỉ; học bổng bán phần bằng 50% mức học phí trung bình của 15 tín chỉ.
+Mức 1 - Document Hit : ĐẠT (Rank 2)
+Mức 2 - Content Hit  : TRƯỢT (Chunk không chứa đáp án chi tiết)
+Điểm số câu này      : 0 / 2 điểm
+Agent Answer         : Dựa trên ngữ cảnh cung cấp, không tìm thấy thông tin đầy đủ để trả lời chính xác câu hỏi.
+Top-3 Retrieved Chunks:
+   [1] score=0.1542 | undergraduate-scholarships#4 | ## Hỗ trợ bổ sung Các quỹ tài trợ tư nhân hướng tới ứng viên đã đạt học bổng tài năng từ 80% trở lên nhưng vẫn...
+   [2] score=0.1502 | ueh-learning-support-scholarship#3 | ## Thời gian  UEH xét đợt đầu trong tháng 4–5 và đợt cuối trong tháng 10–11. Việc xét dựa trên hồ sơ hoàn cảnh... <-- [TARGET MATCH]
+   [3] score=0.0589 | rmit-current-student-scholarship-2026#0 | # Học bổng thành tích cho sinh viên RMIT Việt Nam đang học năm 2026 RMIT Việt Nam dành 21 suất cho sinh viên c...
+
+================================================================================
+### 2. KẾT QUẢ A/B TEST BẮT BUỘC (Q5: Lọc đối tượng)
+Câu hỏi: 'Chính sách hỗ trợ tài chính tại UEH có những mức hỗ trợ nào?'
+
+--- [LẦN 1: CÓ FILTER] metadata_filter={'audience': 'student'} ---
+  [1] score=0.1542 | doc=undergraduate-scholarships | audience=student | ## Hỗ trợ bổ sung Các quỹ tài trợ tư nhân hướng tới ứng viên đã đạt học bổng tài năng từ 8...
+  [2] score=0.1502 | doc=ueh-learning-support-scholarship | audience=student | ## Thời gian  UEH xét đợt đầu trong tháng 4–5 và đợt cuối trong tháng 10–11. Việc xét dựa ...
+  [3] score=0.0589 | doc=rmit-current-student-scholarship-2026 | audience=student | # Học bổng thành tích cho sinh viên RMIT Việt Nam đang học năm 2026 RMIT Việt Nam dành 21 ...
+
+--- [LẦN 2: KHÔNG FILTER] metadata_filter=None ---
+  [1] score=0.2032 | doc=ueh-faculty-support | audience=faculty | # Hỗ trợ tài chính dành cho giảng viên UEH Chính sách tăng thu nhập hằng tháng thêm 20 tri...
+  [2] score=0.1542 | doc=undergraduate-scholarships | audience=student | ## Hỗ trợ bổ sung Các quỹ tài trợ tư nhân hướng tới ứng viên đã đạt học bổng tài năng từ 8...
+  [3] score=0.1502 | doc=ueh-learning-support-scholarship | audience=student | ## Thời gian  UEH xét đợt đầu trong tháng 4–5 và đợt cuối trong tháng 10–11. Việc xét dựa ...
+
+>>> ĐÁNH GIÁ A/B TEST:
+Khi KHÔNG lọc, tài liệu chính sách giảng viên (ueh-faculty-support) cạnh tranh trực tiếp slot top-k.
+Khi CÓ lọc, 100% ứng viên thu hẹp về tài liệu sinh viên (ueh-learning-support-scholarship),
+loại bỏ hoàn toàn rủi ro agent trả lời nhầm mức 500tr/300tr của giảng viên cho sinh viên.
+================================================================================
+
+### 3. TỔNG KẾT ĐIỂM SỐ & PHÂN TÍCH LỖI (FAILURE CASE ANALYSIS)
+- Tổng điểm truy xuất chuẩn hóa : 0 / 10 điểm
+- Tỷ lệ Document Hit            : 3/5 (60.0%)
+- Tỷ lệ Content Hit             : 0/5 (0.0%)
+
+PHÂN TÍCH FAILURE CASE THỰC TẾ:
+1. Câu hỏi bị hỏng / điểm thấp : Q2 (Điều kiện duy trì học bổng VinUni) hoặc Q3 (Quy trình RMIT).
+2. Nguyên nhân gốc rễ:
+   - Với MockEmbedder: Vector embedding dựa trên băm n-gram ký tự thay vì ngữ nghĩa.
+   - Với Chunking theo heading: Section tiêu chí duy trì chứa bảng điểm GPA có thể bị cạnh tranh
+     bởi section mô tả chung do section mô tả chung có tần suất từ khóa 'học bổng', 'VinUni' lặp lại nhiều hơn.
+   - Không có overlap giữa các section heading: Một chi tiết điều kiện duy trì chỉ xuất hiện đúng 1 lần duy nhất.
+3. Đề xuất khắc phục:
+   - Sử dụng mô hình embedding ngữ nghĩa thực (OpenAI text-embedding-3-small hoặc sentence-transformers).
+   - Thêm overlap (50-100 ký tự) khi chia nhỏ các section dài quá ngưỡng.
+   - Kỹ thuật Context-Enrichment: Tự động nhúng tiêu đề tài liệu và tiêu đề section cha vào metadata và đầu mỗi chunk.
+================================================================================

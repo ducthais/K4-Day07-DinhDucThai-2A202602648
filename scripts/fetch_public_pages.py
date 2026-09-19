@@ -6,7 +6,8 @@ between requests, and accepts only HTML/text pages. It is not a site crawler.
 """
 
 from __future__ import annotations
-
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
 import argparse
 import csv
 import re
